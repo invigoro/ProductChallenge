@@ -4384,8 +4384,6 @@ $data = '{
 
 $products = json_decode($data, true);
 
-//echo $products[399783]['Price'];
-
 $conn = mysqli_connect($host, $username, $password, $dbname);
 
 //check connection
@@ -4393,7 +4391,8 @@ if(!$conn) {
    die("Connection failed: " . mysqli_connect_error());
 }
 
-/*
+//delete table if it already exists
+//define new table with 1 entry per product
 $create = "DROP TABLE IF EXISTS productdb.product; CREATE TABLE productdb.product (
    productid INT PRIMARY KEY,
    image VARCHAR (255) NOT NULL,
@@ -4410,14 +4409,9 @@ if(!$result) {
    echo "Database creation error";
 }
 
-*/
-
+//iterate through JSON object and insert data into table
 foreach ($products as $key => $p) {
    $mykey = $key;
-   /*echo $mykey;
-   echo $p['Name'];
-   echo $p['Price'];
-   echo $p['QuantityAvailable'];*/
    $insert = "INSERT INTO product (productid, image, name, quantityavailable, quantitysold, price, category) VALUES ("
    . $mykey . ", '" . $p['ImageUrl'] . "', '" . $p['Name'] . "', " . $p['QuantityAvailable'] 
    . ", " . $p['QuantitySold'] . ", " . $p['Price'] . ", '" . $p['Category'] . "');";
