@@ -19,9 +19,11 @@
     <li class="nav-item">
       <a class="nav-link" href="./list.php">Product List</a>
     </li>
+    <!--
     <li class="nav-item">
-      <a class="nav-link" href="#">Categories</a>
+      <a class="nav-link" href="./categories.php">Categories</a>
     </li>
+    -->
   </ul>
   <form method='get' class="form-inline my-2 my-lg-0" action="./product.php">
     <input class="form-control mr-sm-2" name='id' type="text" placeholder="Search by ProductID">
