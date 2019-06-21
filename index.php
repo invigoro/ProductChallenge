@@ -13,8 +13,8 @@ $totalsold = getTotalProductsSold();
 $totalprofit = getTotalGross();
 $result1 = getTop5Categories();
 $result2 = getBottom5Categories();
-$result3 = getTop3Products();
-$result4 = getBottom3Products();
+$result3 = getTop5Products();
+$result4 = getBottom5Products();
 
 echo "<div class='row text-center'>"; //start the first row of our responsive grid
 
