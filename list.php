@@ -33,7 +33,7 @@ $_SESSION['sort'] = $sort;
 
 ?>
     <div class="container-fluid" style="margin-top:80px">
-        <h1 class='text-center display-3'>Product List</h1>
+        <h1 class='text-center display-2'>Product List</h1><br>
         <table class="table table-striped table-hover"> <!--DEFINE HEAD OF TABLE TO BE POPULATED BY SQL-->
             <thead class='thead-dark'>
                 <tr>

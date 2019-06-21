@@ -1,6 +1,6 @@
 <html>
 <?php include './navbar.php';?>
-    <div class="container-fluid" style="margin-top:80px">
+    <div class="container" style="margin-top:80px">
     <h1 class='text-center display-2'>Store Overview</h1><br><br>
 <?php
 include '../sqlfunctions.php';
@@ -13,6 +13,8 @@ $totalsold = getTotalProductsSold();
 $totalprofit = getTotalGross();
 $result1 = getTop5Categories();
 $result2 = getBottom5Categories();
+$result3 = getTop3Products();
+$result4 = getBottom3Products();
 
 echo "<div class='row text-center'>"; //start the first row of our responsive grid
 
@@ -76,9 +78,9 @@ else {
 echo "</div><br><br>";
 echo "<div class='row text-center'>";
 
+//get the top 5 best selling categories
 if ($result1 || mysqli_num_rows($result1) > 0) {
-        //output available items from each row 
-    echo "<div class='col'><h2 class='display-4'>Best Selling Categories</h2></div></div><br><br><div class='row text-center'>";
+    echo "<div class='col'><h2 class='display-4'>Top Selling Categories</h2></div></div><br><br><div class='row text-center'>";
     while($row = mysqli_fetch_assoc($result1)) {
        echo "<div class='col-md'><h3>" . $row['category'] . "</h3>";
        echo "<p>" . $row['sqs'] . " items sold</p></div>";
@@ -91,6 +93,55 @@ else {
 //start a new row in our responsive grid
 echo "</div><br><br>";
 echo "<div class='row text-center'>";
+
+//get the bottom 5 selling categories
+if ($result2 || mysqli_num_rows($result2) > 0) {
+echo "<div class='col'><h2 class='display-4'>Lowest Selling Categories</h2></div></div><br><br><div class='row text-center'>";
+while($row = mysqli_fetch_assoc($result2)) {
+   echo "<div class='col-md'><h3>" . $row['category'] . "</h3>";
+   echo "<p>" . $row['sqs'] . " items sold</p></div>";
+}
+}
+else {
+echo "No categories";
+}
+
+//start a new row in our responsive grid
+echo "</div><br><br><hr>";
+echo "<div class='row text-center'>";
+
+//get the top 5 selling products
+if ($result3 || mysqli_num_rows($result3) > 0) {
+echo "<div class='col'><h2 class='display-4'>Top Selling Items</h2></div></div><br><br><div class='row text-center'>";
+while($row = mysqli_fetch_assoc($result3)) {
+   echo "<div class='col-md'><h3>" . $row['name'] . "</h3>";
+   echo "<img width='150px' src='" . $row['image'] . "'>";
+   echo "<p>" . $row['quantitysold'] . " sold</p>";
+   echo "<form action='product.php' method='GET'>" . "<input type='hidden' name='id' value='" . $row["productid"] . "'>" . "<input class='btn btn-info' type='submit' value='See Details'></form></div>";
+}
+}
+else {
+echo "No categories";
+}
+
+//start a new row in our responsive grid
+echo "</div><br><br>";
+echo "<div class='row text-center'>";
+
+//get the bottom 5 selling products
+if ($result4 || mysqli_num_rows($result4) > 0) {
+echo "<div class='col'><h2 class='display-4'>Lowest Selling Items</h2></div></div><br><br><div class='row text-center'>";
+while($row = mysqli_fetch_assoc($result4)) {
+   echo "<div class='col-md'><h3>" . $row['name'] . "</h3>";
+   echo "<img width='150px' src='" . $row['image'] . "'>";
+   echo "<p>" . $row['quantitysold'] . " sold</p>";
+   echo "<form action='product.php' method='GET'>" . "<input type='hidden' name='id' value='" . $row["productid"] . "'>" . "<input class='btn btn-info' type='submit' value='See Details'></form></div>";
+}
+}
+else {
+echo "No categories";
+}
+
 
 mysqli_close($conn);
 

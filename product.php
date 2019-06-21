@@ -1,6 +1,6 @@
 <html>
 <?php include './navbar.php';?>
-    <div class="container-fluid" style="margin-top:80px">
+    <div class="container" style="margin-top:80px">
 <?php
 include '../sqlfunctions.php';
 session_start();
@@ -23,7 +23,7 @@ else {
             echo "<div class='col'><h1 class='display-2'>" . $row['name'] . "</h1>"
             . "<p>Product ID: " . $row['productid'] . " &#183 Category: " . $row['category'] . "</p>"
             . "<img src=\"" . $row['image'] . "\" width='300px'></div></div>";
-            echo "<div class='row text-center'>";
+            echo "<br><br><div class='row text-center'>";
 
             //calculate the differences between the product's info and the avg for other items in the same category
             $aqadiff = round(($row['quantityavailable'] - $avgs['aqa']) / $avgs['aqa'] * 100);
