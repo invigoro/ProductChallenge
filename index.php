@@ -142,6 +142,14 @@ else {
 echo "No categories";
 }
 
+//start a new row in our responsive grid
+echo "</div><br><br>";
+echo "<div class='row text-center'>";
+
+//button to go to list page
+echo "<div class='col'><a href='./list.php' class='btn btn-info btn-block btn-lg' role='button'>See All Products</a></div>";
+
+echo "</div><br><br>"; //end the reign of tyranny of this grid layout
 
 mysqli_close($conn);
 
