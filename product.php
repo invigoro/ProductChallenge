@@ -15,7 +15,7 @@ else {
     if ($result1 && mysqli_num_rows($result1) == 1) {
         //output available items from each row 
         while($row = mysqli_fetch_assoc($result1)) {
-            $result2 = getAvgsCategory($row['category']); //get the average values of price, quantity available, and quantity sold for items in the same category
+            $result2 = getStatsCategory($row['category']); //get the average values of price, quantity available, and quantity sold for items in the same category
             if($result2 && mysqli_num_rows($result2) == 1) {
             $avgs = mysqli_fetch_assoc($result2);
 
@@ -65,5 +65,12 @@ else {
     else {
         echo "<div class='display-4 text-center'>No item with id '" . $_GET['id'] . "' available.</div>";
     }
-    mysqli_close($conn);
+    echo "</div><br><br>";
+    echo "<div class='row text-center'>";
+    
+    //button to go to list page
+    echo "<div class='col'><a href='./list.php' class='btn btn-info btn-block btn-lg' role='button'>Go to Products</a></div>";
+    
+    echo "</div><br><br>"; //end the reign of tyranny of this grid layout
+   mysqli_close($conn);
 }

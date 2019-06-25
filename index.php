@@ -115,7 +115,7 @@ if ($result3 || mysqli_num_rows($result3) > 0) {
 echo "<div class='col'><h2 class='display-4'>Top Selling Items</h2></div></div><br><br><div class='row text-center'>";
 while($row = mysqli_fetch_assoc($result3)) {
    echo "<div class='col-md'><h3>" . $row['name'] . "</h3>";
-   echo "<img class='img-fluid rounded' src='" . $row['image'] . "'>";
+   echo "<img class='img-fluid rounded img-thumbnail' src='" . $row['image'] . "'>";
    echo "<p>" . $row['quantitysold'] . " sold</p>";
    echo "<form action='product.php' method='GET'>" . "<input type='hidden' name='id' value='" . $row["productid"] . "'>" . "<input class='btn btn-info' type='submit' value='See Details'></form></div>";
 }
@@ -133,7 +133,7 @@ if ($result4 || mysqli_num_rows($result4) > 0) {
 echo "<div class='col'><h2 class='display-4'>Lowest Selling Items</h2></div></div><br><br><div class='row text-center'>";
 while($row = mysqli_fetch_assoc($result4)) {
    echo "<div class='col-md'><h3>" . $row['name'] . "</h3>";
-   echo "<img class='img-fluid rounded' src='" . $row['image'] . "'>";
+   echo "<img class='img-fluid rounded img-thumbnail' src='" . $row['image'] . "'>";
    echo "<p>" . $row['quantitysold'] . " sold</p>";
    echo "<form action='product.php' method='GET'>" . "<input type='hidden' name='id' value='" . $row["productid"] . "'>" . "<input class='btn btn-info' type='submit' value='See Details'></form></div>";
 }
